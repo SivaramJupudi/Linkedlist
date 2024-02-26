@@ -1,0 +1,33 @@
+class Solution
+{
+    public static Node reverse(Node head, int k)
+    {
+        //Your code here
+        Node temp = head;
+        Node front = null;
+        Node prev = null;
+        int count = 0;
+
+        // Reverse first k nodes of the linked list
+        while (count < k && temp != null) {
+            front = temp.next;
+            temp.next = prev;
+            prev = temp;
+            temp = front;
+            count++;
+        }
+
+        // Move the pointer to the k+1 node
+        if (front != null) {
+            head.next = reverse(front, k);
+        }
+
+        return prev; // prev is the new head of the reversed list
+
+
+        
+        
+ 
+        
+    }
+}
